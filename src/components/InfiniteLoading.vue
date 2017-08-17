@@ -28,9 +28,10 @@
    * @return {DOM}        the first scroll parent
    */
   function getScrollParent(elm) {
+    const elmComputedStyle = getComputedStyle(elm);
     if (elm.tagName === 'BODY') {
       return window;
-    } else if (['scroll', 'auto'].indexOf(getComputedStyle(elm).overflowY) > -1) {
+    } else if (elmComputedStyle && ['scroll', 'auto'].indexOf(elmComputedStyle.overflowY) > -1) {
       return elm;
     } else if (elm.hasAttribute('infinite-wrapper') || elm.hasAttribute('data-infinite-wrapper')) {
       return elm;
